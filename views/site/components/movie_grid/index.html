@@ -1,0 +1,10 @@
+<div class="__movie_grid">
+	{% if movies is defined and movies|length > 0 %} {% for movie in movies %} {%
+	include "site/components/movie_card/index.html" with { movie: movie } %} {%
+	endfor %} {% else %}
+	<p class="__movie_grid_message">
+		There are no movies registered yet.
+		<a href="/post">Register a movie now</a>!
+	</p>
+	{% endif %}
+</div>

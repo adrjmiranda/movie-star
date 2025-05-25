@@ -1,0 +1,74 @@
+.__post_area {
+	max-width: 720px;
+	margin: 0 auto;
+}
+
+.__post_title {
+	margin-bottom: 1.75rem;
+	font-weight: 800;
+	font-size: 1.85rem;
+	text-transform: capitalize;
+}
+
+.__post_preview {
+	display: grid;
+	grid-template-columns: 70% 28%;
+	column-gap: 2%;
+	height: 275px;
+	margin-bottom: 2.25rem;
+}
+
+.__post_video {
+	grid-column: 1/2;
+	height: 100%;
+}
+
+.__post_video iframe {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.__post_video,
+.__post_image {
+	border-radius: 0.15rem;
+	overflow: hidden;
+	box-shadow: 1px 1px 50px 25px rgba(252, 196, 52, 0.05);
+	border: 1px solid rgba(252, 196, 52, 0.18);
+}
+
+.__post_image img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.__post_form {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.__post_field {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	flex: 1;
+}
+
+.__post_input {
+	flex: 0;
+}
+
+.__post_group {
+	display: flex;
+	gap: 0.85rem;
+	flex-wrap: wrap;
+}
+
+select.__post_input option {
+	background-color: var(--primary-bg-color);
+}

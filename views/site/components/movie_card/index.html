@@ -1,0 +1,11 @@
+<div class="__movie_card">
+	<div class="__movie_card_rating">
+		<i class="fa-solid fa-star"></i><span>{{ movie["rating"] }} / 10</span>
+	</div>
+
+	<div class="__movie_card_img" style="background-image: url('{{ base_url() }}/assets/img/{% if movie["image"] == "" %}movie-time.png{% else %}movies/{{ movie["image"] }}{% endif %}');"></div>
+	<div class="__movie_card_info">
+		<h3 class="__movie_card_title">{{ movie["title"] }}</h3>
+	</div>
+	<a href="{{ url_for("movie", { id: movie["id"] }) }}" class="primary_btn __movie_card_button">More</a>
+</div>

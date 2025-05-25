@@ -1,0 +1,47 @@
+.__movie_grid {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: auto;
+	column-gap: 0.85rem;
+	row-gap: 0.95rem;
+}
+
+.__movie_grid_message {
+	grid-column: all;
+	grid-column-start: 1;
+	margin-top: 1.5rem;
+	font-weight: 300;
+}
+
+.__movie_grid_message a {
+	color: var(--primary-color);
+	font-weight: 400;
+}
+
+.__movie_grid_message a:hover {
+	text-decoration: underline;
+}
+
+@media screen and (max-width: 1080px) {
+	.__movie_grid {
+		grid-template-columns: repeat(4, 1fr);
+	}
+}
+
+@media screen and (max-width: 920px) {
+	.__movie_grid {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.__movie_grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media screen and (max-width: 565px) {
+	.__movie_grid {
+		grid-template-columns: 100%;
+	}
+}

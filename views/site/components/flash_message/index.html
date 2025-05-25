@@ -1,0 +1,5 @@
+{% set flash = flash_message() %} {% if flash != null %}
+<div class="__flash_message container {{ flash["type"] }}">
+	<p class="__flash_message_text">{{ flash["message"] }}</p>
+</div>
+{% endif %}

@@ -1,0 +1,5 @@
+{% set formmsg = form_message(field) %} {% if formmsg != null %}
+<div class="__form_message">
+	<p class="__form_message_text">{{ formmsg }}</p>
+</div>
+{% endif %}

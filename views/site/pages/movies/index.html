@@ -1,0 +1,24 @@
+{% extends "site/layout.html" %} {% block content %}
+<div class="container page_container">
+	{% if movies is defined and movies|length > 0 %}
+	<div class="__movies_container">
+		<table class="__movies_table">
+			<thead class="__movies_thead">
+				<tr class="__movies_tr">
+					<th class="__movies_th">#</th>
+					<th class="__movies_th">Title</th>
+					<th class="__movies_th">Category</th>
+					<th class="__movies_th">Duration</th>
+					<th class="__movies_th">Actions</th>
+				</tr>
+			</thead>
+			<tbody class="__movies_tbody">
+				{% for movie in movies %} {% include "site/components/movie_row/index.html" %} {% endfor %}
+			</tbody>
+		</table>
+	</div>
+	{% else %}
+	<p>You haven't posted about any movies yet. <a href="{{ url_for("post") }}" class="__post_link">Register a movie now</a>.</p>
+	{% endif %}
+</div>
+{% endblock %}

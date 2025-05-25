@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta
+			http-equiv="X-UA-Compatible"
+			content="ie=edge"
+		/>
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<title>{{ site_title }}</title>
+
+		{# SEO #}
+		<meta
+			name="description"
+			content="{{ site_description }}"
+		/>
+		<meta
+			name="keywords"
+			content="{{ site_keywords }}"
+		/>
+		<meta
+			name="author"
+			content="{{ author_name }}"
+		/>
+		<meta
+			name="robots"
+			content="index, follow"
+		/>
+
+		{# Open Graph #}
+		<meta
+			property="og:title"
+			content="{{ site_title }}"
+		/>
+		<meta
+			property="og:description"
+			content="{{ site_description }}"
+		/>
+		<meta
+			property="og:type"
+			content="article"
+		/>
+		<meta
+			property="og:url"
+			content="{{ canonical_url }}"
+		/>
+		<meta
+			property="og:image"
+			content="{{ image_url }}"
+		/>
+		<meta
+			property="og:site_name"
+			content="Coder Blog"
+		/>
+
+		{# Twitter Cards #}
+		<meta
+			name="twitter:card"
+			content="summary_large_image"
+		/>
+		<meta
+			name="twitter:title"
+			content="{{ site_title }}"
+		/>
+		<meta
+			name="twitter:description"
+			content="{{ site_description }}"
+		/>
+		<meta
+			name="twitter:image"
+			content="{{ image_url }}"
+		/>
+		<meta
+			name="twitter:site"
+			content="@your_twitter_handle"
+		/>
+		<meta
+			name="twitter:creator"
+			content="@your_twitter_handle"
+		/>
+
+		{# Compatibility and Performance #}
+		<link
+			rel="canonical"
+			href="{{ canonical_url }}"
+		/>
+		<meta
+			name="format-detection"
+			content="telephone=no"
+		/>
+		<meta
+			name="theme-color"
+			content="#ffffff"
+		/>
+
+		{# Favicon and Icons #}
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="{{ base_url() }}/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="{{ base_url() }}/favicon-16x16.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			href="{{ base_url() }}/apple-touch-icon.png"
+		/>
+		<link
+			rel="manifest"
+			href="{{ base_url() }}/site.webmanifest"
+		/>
+
+		{# Style #}
+		<link
+			rel="stylesheet"
+			href="{{ base_url() }}/assets/css/style.css"
+		/>
+
+		{# Font Awesome #}
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+			integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+
+		{{ other_styles("site")|raw }} {# Scripts #}
+		<script
+			src="{{ base_url() }}/assets/js/navbar.js"
+			defer
+		></script>
+		<script
+			src="{{ base_url() }}/assets/js/imagepreview.js"
+			defer
+		></script>
+		<script
+			src="{{ base_url() }}/assets/js/biocharcount.js"
+			defer
+		></script>
+		<script
+			src="{{ base_url() }}/assets/js/descriptioncharcount.js"
+			defer
+		></script>
+		<script
+			src="{{ base_url() }}/assets/js/videopreview.js"
+			defer
+		></script>
+	</head>
+	<body>
+		{% include "site/components/navbar/index.html" %} {% include
+		"site/components/flash_message/index.html" %} {% block content %}{% endblock
+		%} {% include "site/components/footer/index.html" %}
+	</body>
+</html>

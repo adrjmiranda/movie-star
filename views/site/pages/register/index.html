@@ -1,0 +1,88 @@
+{% extends "site/layout.html" %} {% block content %}
+<div class="page_container">
+	<div class="auth_area __register">
+		<h1 class="auth_title container">
+			Create an account and share your opinions with thousands of other users.
+		</h1>
+
+		<div class="auth_container __register_container container">
+			<h2 class="auth_form_title">Register</h2>
+
+			<form action="{{ url_for("register") }}" method="post" class="auth_form __register_form">
+				{% include "site/components/csrf_input/index.html" %}
+
+				<div class="auth_field">
+					<label for="first_name" class="auth_form_label">First name:</label>
+					<input
+						type="text"
+						name="first_name"
+						id="first_name"
+						placeholder="Your first name"
+						value="{{ input_data("first_name") }}"
+						class="auth_form_input"
+					/>
+					{% include "site/components/form_message/index.html" with { field: "first_name" } %}	
+				</div>
+
+				<div class="auth_field">
+					<label for="last_name" class="auth_form_label">Last name:</label>
+					<input
+						type="text"
+						name="last_name"
+						id="last_name"
+						placeholder="Your last name"
+						value="{{ input_data("last_name") }}"
+						class="auth_form_input"
+					/>
+					{% include "site/components/form_message/index.html" with { field: "last_name" } %}
+				</div>
+
+				<div class="auth_field">
+					<label for="email" class="auth_form_label">E-mail:</label>
+					<input
+						type="email"
+						name="email"
+						id="email"
+						placeholder="Your best email"
+						value="{{ input_data("email") }}"
+						class="auth_form_input"
+					/>
+					{% include "site/components/form_message/index.html" with { field: "email" } %}
+				</div>
+
+				<div class="auth_field">
+					<label for="password" class="auth_form_label">Password:</label>
+					<input
+						type="password"
+						name="password"
+						id="password"
+						placeholder="Your password"
+						value="{{ input_data("password") }}"
+						class="auth_form_input"
+					/>
+					{% include "site/components/form_message/index.html" with { field: "password" } %}
+				</div>
+
+				<div class="auth_field">
+					<label for="password_confirmation" class="auth_form_label">Password confirmation:</label>
+					<input
+						type="password"
+						name="password_confirmation"
+						id="password_confirmation"
+						placeholder="Your password again"
+						value="{{ input_data("password_confirmation") }}"
+						class="auth_form_input"
+					/>
+					{% include "site/components/form_message/index.html" with { field: "password_confirmation" } %}
+				</div>
+
+				<button type="submit" class="auth_form_button primary_btn">Register</button>
+
+				<p class="auth_form_change">
+					Already have an account? <a href="{{ url_for("login_view") }}">Login</a>
+				</p>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

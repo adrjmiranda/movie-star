@@ -1,0 +1,7 @@
+{% if reviews is defined and reviews|length > 0 %}
+<h4 class="__comments_title">Comments:</h4>
+<div class="__comments_container">
+	{% for review in reviews %} {% include "site/components/comment/index.html" %}
+	{% endfor %}
+</div>
+{% endif %}

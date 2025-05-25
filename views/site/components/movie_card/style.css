@@ -1,0 +1,145 @@
+.__movie_card {
+	padding: 0.25rem;
+	background-color: var(--primary-bg-color);
+	border-radius: var(--card-border-radius);
+	height: 380px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	box-shadow: 1px 1px 50px 15px rgba(255, 255, 255, 0.025);
+	transition: 0.35s all ease-in-out;
+	position: relative;
+}
+
+.__movie_card:hover {
+	transform: scale(1.025);
+	box-shadow: 1px 1px 50px 15px rgba(255, 255, 255, 0.05);
+}
+
+.__movie_card_img {
+	height: 80%;
+	background-size: cover;
+	background-position: center;
+	border-radius: var(--card-border-radius);
+	filter: grayscale(0.15);
+	transition: 0.35s all ease-in-out;
+}
+
+.__movie_card:hover .__movie_card_img {
+	filter: grayscale(0);
+}
+
+.__movie_card_info {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	align-items: center;
+	height: 20%;
+	padding-top: 0.55rem;
+}
+
+.__movie_card_title {
+	font-weight: 600;
+	font-size: 0.98rem;
+	text-transform: capitalize;
+	text-align: center;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	line-clamp: 2;
+	overflow: hidden;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	-moz-box-orient: vertical;
+	margin-bottom: 0.55rem;
+	max-width: 100%;
+}
+
+.__movie_card_rating {
+	position: absolute;
+	top: 0.85rem;
+	right: 0.85rem;
+	background-color: var(--primary-bg-color);
+	z-index: 10;
+	padding: 0.15rem 0.25rem;
+	border-radius: var(--card-border-radius);
+	font-size: 0.75rem;
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
+.__movie_card_rating i {
+	color: var(--primary-color);
+}
+
+@media screen and (max-width: 1080px) {
+	.__movie_card {
+		height: 330px;
+	}
+}
+
+@media screen and (max-width: 920px) {
+	.__movie_card {
+		height: 380px;
+	}
+}
+
+@media screen and (max-width: 700px) {
+	.__movie_card {
+		height: 480px;
+	}
+
+	.__movie_card_img {
+		height: 85%;
+	}
+
+	.__movie_card_info {
+		height: 15%;
+	}
+}
+
+@media screen and (max-width: 565px) {
+	.__movie_card {
+		height: 576px;
+	}
+
+	.__movie_card_img {
+		height: 85%;
+	}
+
+	.__movie_card_info {
+		height: 15%;
+	}
+}
+
+@media screen and (max-width: 405px) {
+	.__movie_card {
+		height: 476px;
+	}
+}
+
+@media screen and (max-width: 325px) {
+	.__movie_card {
+		height: 376px;
+	}
+}
+
+@media screen and (max-width: 260px) {
+	.__movie_card {
+		height: 320px;
+	}
+
+	.__movie_card_img {
+		height: 75%;
+	}
+
+	.__movie_card_info {
+		height: 25%;
+	}
+}
+
+@media screen and (max-width: 225px) {
+	.__movie_card {
+		height: 280px;
+	}
+}

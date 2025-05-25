@@ -1,0 +1,60 @@
+<nav class="__navbar">
+	<div class="__navbar_container container">
+		<a href="{{ url_for("home") }}" class="__navbar_logo">
+			<img src="{{ base_url() }}/assets/img/logo.png" alt="Movie Star" />
+			<span>Movie Star</span>
+		</a>
+
+		<button type="button" class="__navbar_toggle">
+			<i class="fa-solid fa-xmark __navbar_close hidden"></i>
+			<i class="fa-solid fa-glasses __navbar_show"></i>
+		</button>
+
+		<form action="{{ base_url() }}{{ url_for("movie_search") }}" method="get" class="__navbar_form">
+			<input type="search" name="search" placeholder="Search for a movie" class="__navbar_input">
+			<button type="submit" class="__navbar_form_btn">
+				<i class="fa-solid fa-magnifying-glass"></i>
+			</button>
+		</form>
+
+		<ul class="__navbar_menu">
+			{% if is_auth() %}
+			<li class="__navbar_item">
+				<a href="{{ url_for("post") }}" class="__navbar_link"><i class="fa-regular fa-square-plus"></i> Post</a>
+			</li>
+
+			<li class="__navbar_item">
+				<a href="{{ url_for("movies") }}" class="__navbar_link"><i class="fa-solid fa-film"></i> Movies</a>
+			</li>
+
+			<li class="__navbar_item">
+				<a href="{{ url_for("profile") }}" class="__navbar_link">
+					<i class="fa-regular fa-user"></i> Profile
+				</a>
+			</li>
+
+			<li class="__navbar_item">
+				<a href="{{ url_for("logout") }}" class="__navbar_link"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+			</li>
+
+			{% else %}
+			<li class="__navbar_item">
+				<a href="{{ url_for("home") }}" class="__navbar_link"><i class="fa-solid fa-house"></i> Home</a>
+			</li>
+
+			<li class="__navbar_item">
+				<a href="{{ url_for("about") }}" class="__navbar_link"><i class="fa-regular fa-star-half-stroke"></i> About</a>
+			</li>
+
+			<li class="__navbar_item">
+				<a href="{{ url_for("contact") }}" class="__navbar_link"><i class="fa-regular fa-comment"></i> Contact</a>
+			</li>
+
+			<li class="__navbar_item">
+				<a href="{{ url_for("login_view") }}" class="__navbar_link"><i class="fa-solid fa-user"></i> Login</a>
+			</li>
+			{% endif %}
+			
+		</div>
+	</div>
+</nav>

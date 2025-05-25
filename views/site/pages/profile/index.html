@@ -1,0 +1,150 @@
+{% extends "site/layout.html" %} {% block content %}
+<div class="container page_container">
+	<div class="__profile_area">
+		<div class="__profile_image">
+			<img src="{{ base_url() }}/assets/img/{% if session("user")["image"] != null
+			%}users/{{session("user")["image"]}}{% else %}movie-mask.png{% endif %} "
+			alt="{{session("user")["firstName"]}}" id="imagepreview" />
+		</div>
+
+		<form
+			action="{{ base_url() }}{{ url_for("user_update") }}"
+			method="post"
+			enctype="multipart/form-data"
+			class="__profile_form"
+		>
+			{% include "site/components/csrf_input/index.html" %}
+
+			<div class="__profile_field">
+					<label
+						for="imagepreviewinput"
+						class="__profile_label"
+						>Image:</label
+					>
+					<input
+						type="file"
+						name="image"
+						id="imagepreviewinput"
+					/>
+
+					{% include
+					"site/components/form_message/index.html" with { field: "image" }
+					%}
+				</div>
+
+
+			<div class="__profile_field">
+				<label
+					for="email"
+					class="__profile_label"
+					>E-mail:</label
+				>
+
+				{% set email = input_data("email") %}
+
+				<input type="email" name="email" id="email" placeholder="Your email"
+				value="{% if input_data("email") != null %}{{ email }}{% else %}{{
+				session("user")["email"] }}{% endif %}" class="__profile_input" /> {%
+				include "site/components/form_message/index.html" with { field:
+				"email" } %}
+			</div>
+
+			<div class="__profile_group">
+				<div class="__profile_field">
+				<label
+					for="first_name"
+					class="__profile_label"
+					>First name:</label
+				>
+
+				{% set first_name = input_data("first_name") %}
+
+				<input type="text" name="first_name" id="first_name" placeholder="First name" value="{% if input_data("first_name") != null
+			%}{{ first_name }}{% else %}{{ session("user")["firstName"] }}{%
+				endif %}" class="__profile_input" /> {% include
+				"site/components/form_message/index.html" with { field: "first_name" }
+				%}
+			</div>
+
+			<div class="__profile_field">
+				<label
+					for="last_name"
+					class="__profile_label"
+					>Last name:</label
+				>
+
+				{% set last_name = input_data("last_name") %}
+
+				<input type="text" name="last_name" id="last_name" placeholder="Last name" value="{% if input_data("last_name") != null
+			%}{{ last_name }}{% else %}{{ session("user")["lastName"] }}{%
+				endif %}" class="__profile_input" /> {% include
+				"site/components/form_message/index.html" with { field: "last_name" } %}
+			</div>
+			</div>
+
+			<div class="__profile_group">
+				<div class="__profile_field">
+				<label
+					for="password"
+					class="__profile_label"
+					>Password:</label
+				>
+
+				{% set password = input_data("password") %}
+
+				<input type="password" name="password" id="password" placeholder="*****"
+				value="{{ password }}" class="__profile_input" /> {%
+				include "site/components/form_message/index.html" with { field:
+				"password" } %}
+			</div>
+
+			<div class="__profile_field">
+				<label
+					for="password_confirmation"
+					class="__profile_label"
+					>Password confirmation:</label
+				>
+
+				{% set password_confirmation = input_data("password_confirmation") %}
+
+				<input type="password" name="password_confirmation"
+				id="password_confirmation" placeholder="*****" value="{{
+				password_confirmation }}" class="__profile_input" /> {%
+				include "site/components/form_message/index.html" with { field:
+				"password_confirmation" } %}
+			</div>
+			</div>
+
+			<div class="__profile_field">
+				<label
+					for="bioInput"
+					class="__profile_label"
+					>Bio (<span id="biocharcount"></span>):</label
+				>
+
+				{% set bio = input_data("bio") %}
+
+				<textarea
+					name="bio"
+					id="bioInput"
+					placeholder="Tell us a little about yourself..."
+					rows="5"
+					class="__profile_input"
+				>
+{% if input_data("bio") != null %}{{ bio }}{% else %}{{ session("user")["bio"] }}{% endif %}</textarea
+				>
+				{%
+				include "site/components/form_message/index.html" with { field:
+				"bio" } %}
+			</div>
+
+			<button
+				type="submit"
+				class="primary_btn"
+			>
+				Update my data
+			</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

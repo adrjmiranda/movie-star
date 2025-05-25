@@ -1,0 +1,20 @@
+<tr class="__movies_tr __movie_row">
+    <td class="__movies_td __movie_row_td">{{ loop.index }}</td>
+    <td class="__movies_td __movie_row_td">
+        <img src="{{ base_url() }}/assets/img/movies/{% if movie["image"] != "" %}{{ movie["image"] }}{% else %}
+            movie-time.jpg{% endif %}
+        " alt="{{ movie["title"] }}" class="__movie_row_image">
+        <a href="{{ base_url() }}{{ url_for("movie", {id: movie["id"]}) }}" class="__movies_row_title">{{ movie["title"] }}</a>
+    </td>
+    <td class="__movies_td __movie_row_td">{{ movie["category"] }}</td>
+    <td class="__movies_td __movie_row_td">{% if movie["duration"] == "" %}- - - - - -{% else %}{{ movie["duration"] }} min{% endif %}</td>
+    <td class="__movies_td __movie_row_td __movie_row_action">
+        <a href="{{ url_for("movie_edit", {id: movie["id"]}) }}" class="__movie_row_edit_btn">
+            <i class="fa-solid fa-file-pen"></i>
+        </a>
+
+            <a href="{{ url_for("movie_delete", {id: movie["id"]}) }}" class="__movie_row_delete_btn">
+                <i class="fa-solid fa-trash"></i>
+            </a>
+    </td>
+</tr>

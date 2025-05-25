@@ -1,0 +1,88 @@
+{% if is_auth() and not user_has_already_left_a_review(movie["id"]) %}
+<div class="__comment_area">
+	<h4>Comment:</h4>
+
+	<form
+		action="{{ base_url() }}{{ url_for("review_create") }}"
+		method="post"
+		class="__comment_form"
+	>
+		{% include "site/components/csrf_input/index.html" %} <input type="hidden"
+		name="movie_id" value="{{ movie["id"] }}">
+
+		<div class="__comment_form_field __comment_form_content">
+			<label for="commenttext">Your comment:</label>
+			<textarea
+				name="comment"
+				placeholder="Leave your comment here..."
+				id="commenttext"
+				rows="5"
+			>
+{{ input_data("comment") }}</textarea
+			>
+
+			{% include "site/components/form_message/index.html" with { field:
+			"comment" } %}
+		</div>
+
+		<label>Your rating:</label>
+		<div class="__comment_form_field __comment_form_rating">
+			<label for="rating1">
+				<input type="radio" name="rating" value="1" id="rating1" {% if
+				input_data("rating") == 1 %} checked {% endif %} /> 1
+			</label>
+			<label for="rating2">
+				<input type="radio" name="rating" value="2" id="rating2" {% if
+				input_data("rating") == 2 %} checked {% endif %} /> 2
+			</label>
+			<label for="rating3">
+				<input type="radio" name="rating" value="3" id="rating3" {% if
+				input_data("rating") == 3 %} checked {% endif %} /> 3
+			</label>
+			<label for="rating4">
+				<input type="radio" name="rating" value="4" id="rating4" {% if
+				input_data("rating") == 4 %} checked {% endif %} /> 4
+			</label>
+			<label for="rating5">
+				<input type="radio" name="rating" value="5" id="rating5" {% if
+				input_data("rating") == 5 %} checked {% endif %} /> 5
+			</label>
+			<label for="rating6">
+				<input type="radio" name="rating" value="6" id="rating6" {% if
+				input_data("rating") == 6 %} checked {% endif %} /> 6
+			</label>
+			<label for="rating7">
+				<input type="radio" name="rating" value="7" id="rating7" {% if
+				input_data("rating") == 7 %} checked {% endif %} /> 7
+			</label>
+			<label for="rating8">
+				<input type="radio" name="rating" value="8" id="rating8" {% if
+				input_data("rating") == 8 %} checked {% endif %} /> 8
+			</label>
+			<label for="rating9">
+				<input type="radio" name="rating" value="9" id="rating9" {% if
+				input_data("rating") == 9 %} checked {% endif %} /> 9
+			</label>
+			<label for="rating10">
+				<input type="radio" name="rating" value="10" id="rating10" {% if
+				input_data("rating") == 10 %} checked {% endif %} /> 10
+			</label>
+		</div>
+
+		{% include "site/components/form_message/index.html" with { field: "rating"
+		} %}
+
+		<button
+			type="submit"
+			class="primary_btn __comment_btn"
+		>
+			Comment
+		</button>
+	</form>
+</div>
+{% endif %}
+
+{% if not is_auth() %}
+<p class="__comment_info_paragrath">To be able to comment you must be logged in. <a href="{{ base_url() }}{{ url_for("login") }}">Log in now or create an account</a>.</p>
+{% endif %}
+

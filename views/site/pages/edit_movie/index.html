@@ -1,0 +1,148 @@
+{% extends "site/layout.html" %} {% block content %}
+<div class="container page_container">
+	<div class="__post_area">
+		<h1 class="__post_title">Edit the post:</h1>
+
+		<div class="__post_preview">
+			<div class="__post_video">
+				<iframe src="{% if movie is defined and movie["image"] != ""
+			%}{{ movie["trailer"] }}{% else %}https://www.youtube.com/embed/BNAAmkjHlKA?si=6p9UCpRFJaazLKd6{% endif %}" id="videopreview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+			</div>
+
+
+			<div class="__post_image">
+			<img src="{{ base_url() }}/assets/img/{% if movie is defined and movie["image"] != ""
+			%}movies/{{ movie["image"] }}{% else %}movie-time.jpg{% endif %} "
+			alt="{% if movie is defined %}{{ movie["title"] }}{% else %}The movie title{% endif %}
+			" id="imagepreview" />
+		</div>
+		</div>
+
+		<form
+			action="{{ base_url() }}{{ url_for("movie_update", { id: movie["id"] }) }}"
+			method="post"
+			enctype="multipart/form-data"
+			class="__post_form"
+		>
+			{% include "site/components/csrf_input/index.html" %}
+
+			<div class="__post_group">
+				<div class="__post_field">
+				<label
+					for="imagepreviewinput"
+					class="__post_label"
+					>Cape image:</label
+				>
+				<input type="file" name="image" id="imagepreviewinput" placeholder="The movie image" class="__post_input" /> {% include
+				"site/components/form_message/index.html" with { field: "image" } %}
+			</div>
+
+			<div class="__post_field">
+				<label
+					for="trailer"
+					class="__post_label"
+					>Trailer (URL):</label
+				>
+
+				{% set trailer = input_data("trailer") %}
+
+				<input type="text" name="trailer" id="trailer" placeholder="The movie trailer"
+				value="{% if input_data("trailer") != null %}{{ trailer }}{% else %}{{
+				movie["trailer"] }}{% endif %}" class="__post_input" /> {%
+				include "site/components/form_message/index.html" with { field:
+				"trailer" } %}
+			</div>
+
+			
+			</div>
+
+			<div class="__post_group">
+				<div class="__post_field">
+				<label
+					for="title"
+					class="__post_label"
+					>Title:</label
+				>
+
+				{% set title = input_data("title") %}
+
+				<input type="text" name="title" id="title" placeholder="The movie title"
+				value="{% if input_data("title") != null %}{{ title }}{% else %}{{
+				movie["title"] }}{% endif %}" class="__post_input" /> {%
+				include "site/components/form_message/index.html" with { field:
+				"title" } %}
+			</div>
+
+			<div class="__post_field">
+				<label
+					for="duration"
+					class="__post_label"
+					>Duration (minutes):</label
+				>
+
+				{% set duration = input_data("duration") %}
+
+				<input type="number" name="duration" id="duration" placeholder="The movie duration"
+				value="{% if input_data("duration") != null %}{{ duration }}{% else %}{{
+				movie["duration"] }}{% endif %}" class="__post_input" /> {%
+				include "site/components/form_message/index.html" with { field:
+				"duration" } %}
+			</div>
+
+
+			<div class="__post_field">
+				<label
+					for="category_id"
+					class="__post_label"
+					>Movie category:</label
+				>
+
+				<select
+					name="category_id"
+					id="category_id"
+					class="__post_input"
+				>
+					<option value="">Select a movie category</option>
+					{% if categories is defined %} {% for category in categories %}
+					<option value="{{ category["id"] }}" {% if movie["categoryId"] == category["id"] %}selected{% endif %}
+					 >{{ category["name"] }}</option>
+					{% endfor %} {% endif %}
+				</select>
+
+				{% include "site/components/form_message/index.html" with { field: "categories" } %}
+			</div>
+			</div>
+
+			<div class="__post_field">
+				<label
+					for="descriptionInput"
+					class="__post_label"
+					>Description (<span id="descriptioncharcount"></span>):</label
+				>
+
+				{% set description = input_data("description") %}
+
+				<textarea
+					name="description"
+					id="descriptionInput"
+					placeholder="Tell us a little about yourself..."
+					rows="5"
+					class="__profile_input"
+				>
+{% if input_data("description") != null %}{{ description }}{% else %}{{ movie["description"] }}{% endif %}</textarea
+				>
+				{%
+				include "site/components/form_message/index.html" with { field:
+				"description" } %}
+			</div>
+
+			<button
+				type="submit"
+				class="primary_btn"
+			>
+				Update post
+			</button>
+		</form>
+	</div>
+</div>
+{% endblock %}

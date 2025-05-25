@@ -1,0 +1,53 @@
+.__movie_row_image {
+	height: 47px;
+	width: 25px;
+	object-fit: cover;
+	object-position: center;
+	border-radius: 0.15rem;
+	box-shadow: 1px 1px 50px 25px rgba(252, 196, 52, 0.05);
+	border: 1px solid rgba(252, 196, 52, 0.18);
+}
+
+.__movies_row_title {
+	color: var(--primary-color);
+}
+
+.__movies_row_title:hover {
+	text-decoration: underline;
+}
+
+.__movie_row_delete_btn,
+.__movie_row_edit_btn {
+	width: 2rem;
+	padding-block: 0.55rem;
+	border-radius: 0.15rem;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 0.65rem;
+	box-shadow: 1px 1px 50px 25px rgba(255, 255, 255, 0.035);
+}
+
+.__movie_row_delete_btn i,
+.__movie_row_edit_btn i {
+	color: var(--primary-bg-color);
+}
+
+.__movie_row_edit_btn {
+	background-color: blue;
+}
+
+.__movie_row_delete_btn {
+	background-color: red;
+}
+
+.__movie_row_delete_btn:hover,
+.__movie_row_edit_btn:hover {
+	transform: scale(1.1);
+}
+
+@media screen and (max-width: 395px) {
+	.__movie_row_action {
+		flex-direction: column;
+	}
+}

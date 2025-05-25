@@ -1,0 +1,16 @@
+.__form_message {
+	margin-top: 0.35rem;
+	margin-bottom: -0.65rem;
+}
+
+.__form_message_text {
+	color: #eb1818;
+	font-weight: 400;
+	font-size: 0.8rem;
+	text-align: center;
+	text-transform: lowercase;
+}
+
+.__form_message_text::first-letter {
+	text-transform: capitalize;
+}

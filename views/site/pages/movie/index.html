@@ -1,0 +1,32 @@
+{% extends "site/layout.html" %} {% block content %}
+<div class="container page_container">
+	<div class="__movie_container">
+		<h1 class="page_title"><span>MOVIE:</span> {{ movie["title"] }}</h1>
+		<div class="__movie_video">
+			<iframe src="{% if movie is defined and movie["image"] != "" %}{{ movie["trailer"] }}{% else %}https://www.youtube.com/embed/BNAAmkjHlKA?si=6p9UCpRFJaazLKd6{% endif %}" id="videopreview" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+		</div>
+		<div class="__movie_info">
+			<div class="__movie_description">
+				<h3>Movie description:</h3>
+				<p>{{ movie["description"] }}</p>
+			</div>
+			<div class="__movie_image">
+				<span class="__movie_rating">
+					<i class="fa-solid fa-star-half-stroke"></i>
+					<span>{{ movie["rating"] }} / 10</span>	
+				</span>
+				<img src="{{ base_url() }}/assets/img/{% if movie["image"] == "" %}movie-time.png{% else %}movies/{{ movie["image"] }}{% endif %}
+				" alt="{{ movie["title"] }}">
+				<div class="__movie_user">
+					<p class="__movie_user_name">Posted by<br> <a href="#">{{ movie["userFirstName"] }} {{ movie["userLastName"] }}</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% include "site/components/comment_form/index.html" %}
+
+	{% include "site/components/comments/index.html" with {reviews: movie["reviews"]} %}
+	
+</div>
+{% endblock %}

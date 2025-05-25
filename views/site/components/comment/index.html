@@ -1,0 +1,24 @@
+<div class="__comment">
+	<div class="__comment_info">
+		<div class="__comment_user">
+			<img src="{{ base_url() }}/assets/img/{{ review["userImage"] == "" ?
+			"movie-mask.jpg" : "users/" ~ review["userImage"] }}" alt="{{
+			review["userFirstName"] }} {{ review["userLastName"] }}" />
+			<a
+				href="#"
+				class="__comment_user_name"
+				>{{ review["userFirstName"] }} {{ review["userLastName"] }}</a
+			>
+		</div>
+		<div class="__comment_date">
+			{{ review["createdAt"]|date("l, F j, Y") }}
+		</div>
+	</div>
+	<div class="__comment_content">
+		<p class="__comment_text">{{ review["comment"] }}</p>
+		<span class="__comment_rating">
+			<i class="fa-solid fa-star-half-stroke"></i>
+			{{ review["rating"] }}
+		</span>
+	</div>
+</div>
