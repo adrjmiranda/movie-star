@@ -32,13 +32,13 @@ Ideal for creating engagement around the cinematic universe.
 
 ## 🗂️ Project Structure
 
-├── public/ # Public files and entry point (index.php)
-├── src/ # Main source code (controllers, models, etc.)
-├── helpers/ # Global utility functions
-├── templates/ # Twig templates
-├── config/ # System settings
-├── logs/ # Monolog logs
-└── .env # Environment variables
+- public/ # Public files and entry point (index.php)
+- src/ # Main source code (controllers, models, etc.)
+- helpers/ # Global utility functions
+- templates/ # Twig templates
+- config/ # System settings
+- logs/ # Monolog logs
+- .env # Environment variables
 
 ---
 
